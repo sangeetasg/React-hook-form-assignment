@@ -1,7 +1,7 @@
 import { useFieldArray } from "react-hook-form";
 import { z } from "zod";
-import { useSubmitUser } from "../hooks/useSubmitUser";
-import { userSchema } from "../schemas/userSchema";
+import { useSubmitUser } from "@/features/user/hooks/useSubmitUser";
+import { userSchema } from "@/features/user/schemas/userSchema";
 
 type UserFormValues = z.infer<typeof userSchema>;
 

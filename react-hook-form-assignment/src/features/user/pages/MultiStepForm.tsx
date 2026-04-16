@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useUserForm } from "../hooks/useUserForm";
-import Step1 from "../components/Step1";
-import Step2 from "../components/Step2";
-import Step3 from "../components/Step3";
+import Step1 from "@/features/user/components/Step1";
+import Step2 from "@/features/user/components/Step2";
+import Step3 from "@/features/user/components/Step3";
 
 export default function MultiStepForm() {
   const form = useUserForm();
