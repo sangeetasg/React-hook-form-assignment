@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useUserForm } from "../hooks/useUserForm";
-import Step1 from "@/features/user/components/Step1";
-import Step2 from "@/features/user/components/Step2";
-import Step3 from "@/features/user/components/Step3";
+import { lazy, Suspense } from "react";
+
+const Step1 = lazy(() => import("@/features/user/components/Step1"));
+const Step2 = lazy(() => import("@/features/user/components/Step2"));
+const Step3 = lazy(() => import("@/features/user/components/Step3"));
 
 export default function MultiStepForm() {
   const form = useUserForm();
@@ -26,9 +28,11 @@ export default function MultiStepForm() {
     <div>
       <h2>Step {step + 1}</h2>
 
-      {step === 0 && <Step1 {...form} />}
-      {step === 1 && <Step2 {...form} />}
-      {step === 2 && <Step3 {...form} />}
+      <Suspense fallback={<p>Loading step...</p>}>
+        {step === 0 && <Step1 {...form} />}
+        {step === 1 && <Step2 {...form} />}
+        {step === 2 && <Step3 {...form} />}
+      </Suspense>
 
       <div style={{ marginTop: 20 }}>
         <button onClick={back} disabled={step === 0}>
